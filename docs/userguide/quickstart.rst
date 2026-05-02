@@ -9,7 +9,7 @@ You can install the latest version of ``setuptools`` using :pypi:`pip`::
 
     pip install --upgrade setuptools[core]
 
-Most of the times, however, you don't have to...
+Most of the time, however, you don't have to...
 
 Instead, when creating new Python packages, it is recommended to use
 a command line tool called :pypi:`build`. This tool will automatically download
