@@ -214,6 +214,10 @@ namespaces = true
 [tool.setuptools.exclude-package-data]
 # Remove ruff.toml when installing vendored packages (#4652)
 "*" = ["ruff.toml"]
+# Avoid shipping setuptools' own test suite in wheels (#5212)
+"setuptools" = ["tests/*"]
+"setuptools._distutils" = ["tests/*"]
+"setuptools._distutils.compilers.C" = ["tests/*"]
 
 [tool.distutils.sdist]
 formats = "zip"
