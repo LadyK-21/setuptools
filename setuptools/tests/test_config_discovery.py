@@ -6,6 +6,7 @@ from typing import cast
 
 import jaraco.path
 import pytest
+from jaraco.functools import compose
 from path import Path
 
 import setuptools  # noqa: F401 # force distutils.core to be patched
@@ -19,6 +20,20 @@ from .integration.helpers import get_sdist_members, get_wheel_members, run
 from .textwrap import DALS
 
 import distutils.core
+
+greedy_product = compose(list, product)  # type: ignore[var-annotated,arg-type] # python/mypy#13540
+"""
+``itertools.product`` rendered eager (a list rather than a one-shot iterator).
+
+``@pytest.mark.parametrize`` needs a re-iterable Collection for ``argvalues``:
+a bare iterator gets exhausted after the first of a class' test methods is
+collected, silently skipping the rest. Deprecated in pytest 9.1, raising
+``PytestRemovedIn10Warning`` (pytest-dev/pytest#13409).
+
+The ``type: ignore`` comments work around python/mypy#13540: mypy collapses the
+overloaded ``product`` to its first overload when it is passed by value through
+``compose``'s ParamSpec, mis-typing the result as a single-argument callable.
+"""
 
 
 class TestFindParentPackage:
@@ -162,7 +177,7 @@ class TestDiscoverPackagesAndPyModules:
 
     @pytest.mark.parametrize(
         ("config_file", "param", "circumstance"),
-        product(
+        greedy_product(  # type: ignore[call-arg] # python/mypy#13540
             ["setup.cfg", "setup.py", "pyproject.toml"],
             ["packages", "py_modules"],
             FILES.keys(),
