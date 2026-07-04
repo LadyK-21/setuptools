@@ -55,8 +55,10 @@ jobs:
           platform: ubuntu-latest
         - python: "3.13"
           platform: ubuntu-latest
-        - python: "3.13t"
-          platform: ubuntu-latest
+        # Disabled: cffi (required by PyNaCl) doesn't support free-threaded CPython 3.13t.
+        # Re-enable when cffi supports free-threaded builds, or switch to 3.14t+.
+        # - python: "3.13t"
+        #   platform: ubuntu-latest
         - python: "3.15"
           platform: ubuntu-latest
         - python: pypy3.11
