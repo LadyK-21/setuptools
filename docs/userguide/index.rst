@@ -9,8 +9,8 @@ additional files containing metadata and configuration to not only instruct
 to help installer (such as :pypi:`pip`) during the installation process.
 
 This document contains information to help Python developers through this
-process. Please check the :doc:`/userguide/quickstart` for an overview of
-the workflow.
+process. Please check the :doc:`/userguide/quickstart` for an overview of the
+workflow.
 
 Also note that ``setuptools`` is what is known in the community as :pep:`build
 backend <517#terminology-and-goals>`, user facing interfaces are provided by tools
@@ -37,13 +37,14 @@ Contents
     extension
     declarative_config
     pyproject_config
+    license_migration
 
 ---
 
 .. rubric:: Notes
 
 .. [#package-overload]
-   A :term:`Distribution Package` is also referred in the Python community simply as "package"
+   A :term:`Distribution Package` is also referred in the Python community simply as \"package\"
    Unfortunately, this jargon might be a bit confusing for new users because the term package
    can also to refer any :term:`directory <package>` (or sub directory) used to organize
-   :term:`modules <module>` and auxiliary files.
+   :term:`modules <package>` and auxiliary files.
