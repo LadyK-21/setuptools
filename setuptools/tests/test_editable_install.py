@@ -939,9 +939,6 @@ class TestOverallBehaviour:
         mod1.write_text("var = 17", encoding="utf-8")
         mod2.write_text("var = 781", encoding="utf-8")
         resource_file.write_text("resource 374", encoding="utf-8")
-        # Advance mtime of Python source files so Python's integer-second pyc
-        # validation detects the change even when writes happen in the same
-        # wall-clock second as the previous import.  See pypa/setuptools#4328.
         _advance_mtime(mod1)
         _advance_mtime(mod2)
 
