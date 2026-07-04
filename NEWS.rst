@@ -416,6 +416,7 @@ Bugfixes
 --------
 
 - Backport CVE-47273 from 78.1.1 for Python 3.8. (#4946)
+- Reverted distutils changes that broke the monkey patching of command classes. (#4902)
 
 
 v75.3.3
