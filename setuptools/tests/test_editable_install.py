@@ -951,7 +951,6 @@ class TestOverallBehaviour:
         assert "resource 374" in out
 
 
-
 class TestLinkTree:
     FILES = deepcopy(TestOverallBehaviour.EXAMPLES["src-layout"])
     FILES["pyproject.toml"] += dedent(
