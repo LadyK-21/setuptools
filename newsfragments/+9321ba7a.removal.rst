@@ -1,1 +1,0 @@
-Synced with pypa/distutils@d7633fbed including removal of dry_run support (pypa/distutils#334).
