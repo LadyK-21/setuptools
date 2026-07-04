@@ -189,8 +189,10 @@ EXAMPLES = {
 }
 
 
-if sys.platform != "win32":
-    # ABI3 extensions don't really work on Windows
+if sys.platform != "win32" and not sysconfig.get_config_var("Py_GIL_DISABLED"):
+    # ABI3 extensions don't really work on Windows.
+    # Free-threaded builds also reject Py_LIMITED_API for now.
+    # See https://github.com/python/cpython/issues/146636 (PEP 803 / abi3t).
     EXAMPLES["abi3extension-dist"] = {
         "setup.py": cleandoc(
             """
