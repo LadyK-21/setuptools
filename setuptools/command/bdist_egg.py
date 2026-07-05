@@ -12,7 +12,7 @@ import textwrap
 from collections.abc import Iterator
 from sysconfig import get_path, get_platform, get_python_version
 from types import CodeType
-from typing import TYPE_CHECKING, AnyStr, Literal
+from typing import TYPE_CHECKING, Literal, TypeVar
 
 from setuptools import Command
 from setuptools.extension import Library
@@ -26,6 +26,8 @@ if TYPE_CHECKING:
     from typing import TypeAlias
 
     from _typeshed import GenericPath
+
+    _StrOrBytesT = TypeVar("_StrOrBytesT", bound=str | bytes)
 
 # Same as zipfile._ZipFileMode from typeshed
 _ZipFileMode: TypeAlias = Literal["r", "w", "x", "a"]
@@ -43,8 +45,8 @@ def strip_module(filename):
 
 
 def sorted_walk(
-    dir: GenericPath[AnyStr],
-) -> Iterator[tuple[AnyStr, list[AnyStr], list[AnyStr]]]:
+    dir: GenericPath[_StrOrBytesT],
+) -> Iterator[tuple[_StrOrBytesT, list[_StrOrBytesT], list[_StrOrBytesT]]]:
     """Do os.walk in a reproducible way,
     independent of indeterministic filesystem readdir order
     """
