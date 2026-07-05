@@ -44,7 +44,7 @@ Contents
 .. rubric:: Notes
 
 .. [#package-overload]
-   A :term:`Distribution Package` is also referred in the Python community simply as \"package\"
+   A :term:`Distribution Package` is also referred in the Python community simply as "package"
    Unfortunately, this jargon might be a bit confusing for new users because the term package
    can also to refer any :term:`directory <package>` (or sub directory) used to organize
-   :term:`modules <package>` and auxiliary files.
+   :term:`modules <module>` and auxiliary files.
