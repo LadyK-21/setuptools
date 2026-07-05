@@ -17,7 +17,7 @@ import sys
 import sysconfig
 import tempfile
 from collections.abc import Callable, Iterable, Mapping
-from typing import TYPE_CHECKING, TypeVar
+from typing import TYPE_CHECKING, AnyStr
 
 from jaraco.functools import pass_none
 
@@ -30,8 +30,6 @@ if TYPE_CHECKING:
     from typing_extensions import TypeVarTuple, Unpack
 
     _Ts = TypeVarTuple("_Ts")
-
-    _StrBytes = TypeVar("_StrBytes", str, bytes)
 
 
 def get_host_platform() -> str:
@@ -142,8 +140,8 @@ def convert_path(pathname: str | os.PathLike[str]) -> str:
 
 
 def change_root(
-    new_root: _StrBytes | os.PathLike[_StrBytes], pathname: _StrBytes | os.PathLike[_StrBytes]
-) -> _StrBytes:
+    new_root: AnyStr | os.PathLike[AnyStr], pathname: AnyStr | os.PathLike[AnyStr]
+) -> AnyStr:
     """Return 'pathname' with 'new_root' prepended.  If 'pathname' is
     relative, this is equivalent to "os.path.join(new_root,pathname)".
     Otherwise, it requires making 'pathname' relative and then joining the
